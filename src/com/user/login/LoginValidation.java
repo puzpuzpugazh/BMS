@@ -13,16 +13,22 @@ public class LoginValidation {
 		try {
 			sc = new Scanner(f);
 		} catch (FileNotFoundException e) {
-			System.out.println(e);
+			System.out.println(e+ "\n503 Service Unavailable. Requested DB Can't be found in server. Error from our end \nWe'll fix the issue from our side application will be rebooted tomorrow 6.00AM\n Maintainance time (~6.00AM)");
+			System.exit(0);
 		}
 		this.name = name;
 		this.pass = pass;
-		if (sc.hasNext()) {
-			this.userDet = sc.next();
-			if (userDet.split("-")[0].equals(name) && userDet.split("-")[1].equals(pass)) {
-				sc.close();
-				return true;
+		try {
+			if (sc.hasNext()) {
+				this.userDet = sc.next();
+				if (userDet.split("-")[0].equals(name) && userDet.split("-")[1].equals(pass)) {
+					sc.close();
+					return true;
+				}
 			}
+		} catch (Exception e) {
+			System.out.println(e+"\nData can't be found in our DB. \nRecommended: Kindly check for valid credentails");
+			return false;
 		}
 		return false;
 	}
