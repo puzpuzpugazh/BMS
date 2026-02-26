@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LandingPage {
 
-	static String baseDBUrl = "D:/UNIQ/project/BMSPRJ/src/assets";
+	static String baseDBUrl = "C:\\Users\\ADMIN\\eclipse-workspace\\Bankimport\\src\\assets";
 
 	public static void main(String[] args) {
 		// TODO based on user choice re-direct to login / New user register -> Account
