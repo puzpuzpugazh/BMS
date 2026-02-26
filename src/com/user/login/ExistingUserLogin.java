@@ -3,6 +3,10 @@ package com.user.login;
 import java.io.File;
 import java.util.Scanner;
 
+import com.user.welcome.dashboard.WelcomeUI;
+
+
+
 public class ExistingUserLogin {
 	int accType = 0;
 	File f;
@@ -46,6 +50,7 @@ public class ExistingUserLogin {
 	void loginAccTypeSel(Scanner sc, String baseDBUrl) {
 		ExistingUserLogin eul = new ExistingUserLogin();
 		LoginValidation lv = new LoginValidation();
+		WelcomeUI wel = new WelcomeUI();
 		boolean isLogged = false;
 		System.out.println("Enter Account Type: \n1. Savings \n2. Current");
 		accType = sc.nextInt();
@@ -53,6 +58,7 @@ public class ExistingUserLogin {
 //			Savings
 			if (loginSavingsAcc(lv, f, sc, baseDBUrl) && failCount< 3) {
 				System.out.println("Login Successful on your Savings account");
+				wel.UI();
 			} else {
 				System.out.println("Login failed");
 			}
@@ -60,6 +66,7 @@ public class ExistingUserLogin {
 //			Current
 			if (loginCurrentAcc(lv, f, sc, baseDBUrl) && failCount<3) {
 				System.out.println("Login Successful on your Current account");
+				wel.UI();
 			} else {
 				System.out.println("Login failed");
 			}
