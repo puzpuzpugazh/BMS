@@ -4,17 +4,35 @@ import java.util.Scanner;
 
 public class LandingPage {
 
-
 	static String baseDBUrl = "src/assets";
+
 	public static void main(String[] args) {
-		// TODO based on user choice re-direct to login / New user register -> Account
-		// creation
-		// this is the first interface user should face
-		// handle user login/sign up choice using a method
-//		LandingPage lp = new LandingPage();
 		ExistingUserLogin e = new ExistingUserLogin();
 		Scanner sc = new Scanner(System.in);
-		e.loginAccTypeSel(sc, baseDBUrl);
+		boolean b = true;
+		LandingPage c = new LandingPage();
+		c.landingLogic(b, sc, e);
+		sc.close();
 	}
 
+	public void landingLogic(boolean b, Scanner sc, ExistingUserLogin e) {
+
+		while (b) {
+			System.out.println("                    ||    WELCOME TO  BMS :-)    ||");
+			System.out.print("1. Existing Customer? \n2. New Customer? \n   Choose your option : ");
+
+			int a = sc.nextInt();
+
+			if (a == 1) {
+				System.out.println("Redirecting to login page...");
+				// change b to false
+				e.loginAccTypeSel(sc, baseDBUrl);
+			} else if (a == 2) {
+				System.out.println("Redirecting to the signup page...");
+				// change b to false and redirect to other page
+			} else {
+				System.out.println("Sorry bro option unavailable, Choose one between 1 or 2");
+			}
+		}
+	}
 }
